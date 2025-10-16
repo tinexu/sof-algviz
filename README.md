@@ -20,3 +20,20 @@ An interactive web platform for visualizing algorithms and data structures.
 
 ### Installation
 ```bash
+# Clone the repository
+git clone [repo-url]
+
+# Install frontend dependencies
+cd frontend
+npm install
+
+# Install backend dependencies
+cd ../backend
+npm install
+```
+
+### Running the Application
+[Include run commands]
+
+## Team Members
+- [Add team member slots]
