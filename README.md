@@ -3,7 +3,7 @@
 An interactive web platform for visualizing algorithms and data structures.
 
 ## Project Overview
-[Include the description from your image]
+[Include the description from image]
 
 ## Tech Stack
 - Frontend: React.js, D3.js
