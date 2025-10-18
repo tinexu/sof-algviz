@@ -177,7 +177,6 @@ procedure partition(A, low, high):
                 </div>
               </section>
             )}
-
             {/* DATA STRUCTURES TAB */}
             {activeTab === 'data' && (
               <section className="category">
