@@ -200,7 +200,13 @@ procedure partition(A, low, high):
           <div className="algorithm-screen">
             <h1>{selectedAlgorithm.name}</h1>
             <div className="algorithm-content">
+              {selectedAlgorithm.pseudocode && ( // no time complexities and stuff added yet so for now using this to prevent from showing in data struct screens
+              <div className="algorithm-info">
+                add like time complexities for sorting algs and stuff like that // in depth descriptions  
+              </div>
+              )}
               {/* LEFT: visualization area */}
+              <div className="algorithm-screen-bottom">
               <div className="visualization-area">
                 <p className="placeholder">D3 Visualization Area // Buttons and stuff // Python calls</p>
                 <svg id="visualization"></svg>
@@ -215,6 +221,7 @@ procedure partition(A, low, high):
                   </pre>
                 </div>
               )}
+              </div>
             </div>
             <button
               onClick={() => setSelectedAlgorithm(null)}

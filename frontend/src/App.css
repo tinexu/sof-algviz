@@ -154,18 +154,34 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px;
+  padding: 0px 40px 40px 40px;  
   animation: fadeUp 0.6s ease;
 }
-
+.algorithm-screen h1 {
+  margin-top: 0;
+  padding-top: 10px;
+}
 /* Split content in half */
 .algorithm-content {
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
   width: 100%;
-  max-width: 1200px;
-  gap: 40px;
-  margin-top: 20px;
+  gap: 20px; 
+}
+
+.algorithm-info {
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  text-align: center;
+  flex: 0 0 auto; 
+}
+
+.algorithm-screen-bottom {
+  display: flex;
+  flex-direction: row; 
+  gap: 20px;
 }
 
 /* Visualization side */
