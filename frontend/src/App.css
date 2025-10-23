@@ -177,6 +177,7 @@ html, body {
   padding: 20px;
   text-align: center;
   flex: 0 0 auto; 
+  border-radius: 10px;
 }
 
 .algorithm-screen-bottom {
@@ -244,6 +245,36 @@ html, body {
   background-color: #333;
   transform: scale(1.05);
 }
+.alg_explination p{
+  text-align: left;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.alg_time_complexities {
+  display: flex;
+  direction: row;
+  justify-content: space-evenly;
+  
+}
+
+.best {
+  background-color: #f8c555;
+}
+.worst {
+  background-color: #fe7ab6 ;
+}
+.avg {
+  background-color: #4cd5fc;
+  box-shadow: #f8c555;
+}
+.best, .worst, .avg {
+  color: black;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 
 /*  ANIMATION  */
 @keyframes fadeUp {
