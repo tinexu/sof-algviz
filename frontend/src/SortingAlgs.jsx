@@ -4,8 +4,11 @@ export function visualize(algorithm) {
   const svg = d3.select("#visualization");
   svg.selectAll("*").remove(); // clear previous drawing
 
-  const data = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75];
-
+  const data = Array.from(
+    { length: 20 },
+    () => Math.floor(Math.random() * (50 - 5 + 1)) + 5
+  );
+  
   const width = 800;
   const height = 300;
   const colors = ["#fe7ab6", "#f8c555", "#4cd5fc"];
