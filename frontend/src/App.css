@@ -207,13 +207,6 @@ html, body {
   justify-content: space-evenly;
 }
 
-/* Placeholder text until D3 is added */
-.placeholder {
-  color: #777;
-  font-style: italic;
-  position: absolute;
-}
-
 /* Pseudocode side */
 .pseudocode-area {
   flex: 1;
