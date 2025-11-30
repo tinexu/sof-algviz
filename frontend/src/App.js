@@ -1,4 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import * as d3 from "d3";
+import { visualize } from "./SortingAlgs.jsx";
+
 import './App.css';
 
 function App() {
@@ -35,7 +38,7 @@ function App() {
   If you ever make a full pass with no swaps, you’re done—everything is already in order.
       `
     },
-  
+
     {
       id: 'selection',
       name: 'Selection Sort',
@@ -62,7 +65,7 @@ function App() {
   then move the boundary one step to the right. The left side grows in correct order from smallest upward.
       `
     },
-  
+
     {
       id: 'insertion',
       name: 'Insertion Sort',
@@ -88,7 +91,7 @@ function App() {
   to make space, then drop the item into the gap where it belongs. The left side is always kept perfectly sorted.
       `
     },
-  
+
     {
       id: 'merge',
       name: 'Merge Sort',
@@ -125,7 +128,7 @@ function App() {
   combines two sorted sequences into one sorted sequence while preserving the order of equals.
       `
     },
-  
+
     {
       id: 'quick',
       name: 'Quick Sort',
@@ -157,7 +160,7 @@ function App() {
   on either side. Repeating this “partition-around-a-pivot” idea recursively sorts the whole array.
       `
     },
-  
+
     {
       id: 'heap',
       name: 'Heap Sort',
@@ -185,7 +188,7 @@ function App() {
       if right < n and A[right] > A[largest]:
           largest = right
       if largest != i:
-          swap(A[i], A[largest])
+          swap(A[i], A[largest])q
           heapify(A, largest, n)
       `,
       explanation: `
@@ -196,7 +199,7 @@ function App() {
   doing selection by always having fast access to the current maximum via the heap.
       `
     }
-  ];  
+  ];
 
   const dataStructures = [
     { id: 'stack', name: 'Stack', desc: 'Stores items in a LIFO (Last-In, First-Out) order.' },
@@ -206,6 +209,14 @@ function App() {
     { id: 'hashmap', name: 'Hash Map', desc: 'Uses a hash function to map keys to slots.' },
 
   ];
+
+  useEffect(() => {
+    if (selectedAlgorithm && selectedAlgorithm.pseudocode) {
+      d3.select("#visualization").selectAll("*").remove();
+      visualize();
+    }
+  }, [selectedAlgorithm]);
+
 
   const handleSelect = (algo) => setSelectedAlgorithm(algo);
 
@@ -319,35 +330,41 @@ function App() {
           <div className="algorithm-screen">
             <h1>{selectedAlgorithm.name}</h1>
             <div className="algorithm-content">
-              {selectedAlgorithm.pseudocode &&  ( // no time complexities and stuff added yet so for now using this to prevent from showing in data struct screens
-              <div className="algorithm-info">
-                <h2>- Time Complexity -</h2>
-                <div className = "alg_time_complexities">
-                  <p><span className='best'>Best:{selectedAlgorithm.best}</span></p>
-                  <p><span className='worst'>Worst:{selectedAlgorithm.worst}</span></p>
-                  <p><span className='avg'>Average:{selectedAlgorithm.average}</span></p>
-                </div>
-                <div className = "alg_explination">
+              {selectedAlgorithm.pseudocode && ( // no time complexities and stuff added yet so for now using this to prevent from showing in data struct screens
+                <div className="algorithm-info">
+                  <h2>- Time Complexity -</h2>
+                  <div className="alg_time_complexities">
+                    <p><span className='best'>Best:{selectedAlgorithm.best}</span></p>
+                    <p><span className='worst'>Worst:{selectedAlgorithm.worst}</span></p>
+                    <p><span className='avg'>Average:{selectedAlgorithm.average}</span></p>
+                  </div>
+                  <div className="alg_explination">
                     <p>{selectedAlgorithm.explanation}</p>
                   </div>
-              </div>
+                </div>
               )}
               {/* LEFT: visualization area */}
               <div className="algorithm-screen-bottom">
-              <div className="visualization-area">
-                <p className="placeholder">D3 Visualization Area // Buttons and stuff // Python calls</p>
-                <svg id="visualization"></svg>
-              </div>
-
-              {/* RIGHT: pseudocode area only for algorithms*/}
-              {selectedAlgorithm.pseudocode && (
-                <div className="pseudocode-area">
-                  <h3>Pseudocode</h3>
-                  <pre className="pseudocode-block">
-                    <code>{selectedAlgorithm.pseudocode}</code>
-                  </pre>
+                <div className="visualization-area">
+                  <div className="visual">
+                    <svg id="visualization"></svg>
+                  </div>
+                  <div className="visual_controls">
+                    <span><p>Speed</p></span>
+                    <button className="start">▶ Sort</button>
+                    <button className="restart">↺ Reset</button>
+                  </div>
                 </div>
-              )}
+
+                {/* RIGHT: pseudocode area only for algorithms*/}
+                {selectedAlgorithm.pseudocode && (
+                  <div className="pseudocode-area">
+                    <h3>Pseudocode</h3>
+                    <pre className="pseudocode-block">
+                      <code>{selectedAlgorithm.pseudocode}</code>
+                    </pre>
+                  </div>
+                )}
               </div>
             </div>
             <button
